@@ -28,7 +28,8 @@ namespace Wpf_3
         }
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string fontName = ((sender as ComboBox).SelectedItem as TextBlock).Text;
+             
+            string fontName = ComboBox1.SelectedItem.ToString();
             if (textBox != null)
             {
                 textBox.FontFamily = new FontFamily(fontName);
@@ -36,7 +37,7 @@ namespace Wpf_3
         }
         private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            string fontName2 = ((sender as ComboBox).SelectedItem as TextBlock).Text;
+            string fontName2 = ComboBox2.SelectedItem.ToString();
             if (textBox != null)
             {
                 textBox.FontSize = double.Parse(fontName2);

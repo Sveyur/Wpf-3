@@ -4,8 +4,28 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_3"
+        xmlns:coll="clr-namespace:System.Collections;assembly=mscorlib"
+        xmlns:str="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <coll:ArrayList x:Key="font">
+            <str:String> Arial</str:String>
+            <str:String>Times New Roman </str:String>
+            <str:String>Verdana</str:String>
+            <str:String>Calibri</str:String>
+            <str:String>Georgia</str:String>
+            <str:String>Franklin Gothic</str:String>
+        </coll:ArrayList>
+        <coll:ArrayList x:Key="font1">
+            <str:String>8</str:String>
+            <str:String>12</str:String>
+            <str:String>14</str:String>
+            <str:String>16</str:String>
+            <str:String>18</str:String>
+            <str:String>20</str:String>
+        </coll:ArrayList>
+    </Window.Resources>
     <Window.CommandBindings>
         <CommandBinding Command="local:MyCommands.Exit" Executed="CommandBinding_Executed_1" />
         <CommandBinding Command="Open" Executed="CommandBinding_Executed"/>
@@ -20,16 +40,10 @@
         </Grid.RowDefinitions>
         <ToolBarTray Grid.Row="1">
             <ToolBar Margin="5" Padding="5" >
-                <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="200" SelectionChanged="ComboBox_SelectionChanged">
-                    <TextBlock Text="Arial"/>
-                    <TextBlock Text="Times New Roman"/>
-                    <TextBlock Text="Verdana"/>
-                </ComboBox>
-                <ComboBox Margin="5" Padding="5" SelectedIndex="2" Width="50" SelectionChanged="ComboBox_SelectionChanged_1"  >
-                    <TextBlock Text="12"/>
-                    <TextBlock Text="14"/>
-                    <TextBlock Text="16"/>
-                </ComboBox>
+                <ComboBox x:Name="ComboBox1" Margin="5" Padding="5" SelectedIndex="0" Width="200" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{StaticResource font}"/>
+
+                <ComboBox x:Name="ComboBox2" Margin="5" Padding="5" SelectedIndex="2" Width="50" SelectionChanged="ComboBox_SelectionChanged_1" ItemsSource="{StaticResource font1}"/>
+
             </ToolBar>
             <ToolBar x:Name="toolBar1" Margin="5" Padding="5" >
                 <Button x:Name="Button1" Height="35" Width="35" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Click="Button1_Clic">
@@ -71,7 +85,7 @@
             </MenuItem>
             <MenuItem Header="Правка">
                 <MenuItem Header="Копировать" Command="Copy"/>
-                <MenuItem Header="Вставить" Command="Paste" />               
+                <MenuItem Header="Вставить" Command="Paste" />
             </MenuItem>
         </Menu>
         <Button x:Name="Button4" Grid.Row="3" Content="Выход" Margin="5" Padding="5" Width="70" HorizontalAlignment="Right" Command="local:MyCommands.Exit"/>
