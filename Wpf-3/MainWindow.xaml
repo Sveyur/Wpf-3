@@ -42,8 +42,8 @@
         <ComboBox x:Name="ComboBox0" Margin="5" Padding="5" Grid.Row="1"/>
         <ToolBarTray Grid.Row="2" Style="{DynamicResource ToolBarTrayStyle}">
             <ToolBar Margin="5" Padding="5">
-                <ComboBox x:Name="ComboBox1" Margin="5" Padding="5" SelectedIndex="0" Width="200" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{StaticResource font}" Style="{DynamicResource ComboBoxStyle}"/>
-                <ComboBox x:Name="ComboBox2" Margin="5" Padding="5" SelectedIndex="2" Width="50" SelectionChanged="ComboBox_SelectionChanged_1" ItemsSource="{StaticResource font1}" Style="{DynamicResource ComboBoxStyle}" />
+                <ComboBox x:Name="ComboBox1" Margin="5" Padding="5" SelectedIndex="0" Width="200"  ItemsSource="{StaticResource font}" Style="{DynamicResource ComboBoxStyle}"/>
+                <ComboBox x:Name="ComboBox2" Margin="5" Padding="5" SelectedIndex="2" Width="50"  ItemsSource="{StaticResource font1}" Style="{DynamicResource ComboBoxStyle}" />
             </ToolBar>
             <ToolBar x:Name="toolBar1" Margin="5" Padding="5">
                 <Button x:Name="Button1" Height="35" Width="35" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Click="Button1_Clic" Style="{DynamicResource ButtonStyle}">
@@ -75,7 +75,7 @@
                 </StackPanel>
             </ToolBar>
         </ToolBarTray>
-        <TextBox x:Name="textBox" Grid.Row="3" Margin="5" Padding="5" TextWrapping="Wrap" FontSize="16" FontFamily="5" Style="{DynamicResource TextBoxStyle}"/>
+        <TextBox x:Name="textBox" Grid.Row="3" Margin="5" Padding="5" TextWrapping="Wrap" FontSize="{Binding ElementName=ComboBox2, Path=SelectedValue}" FontFamily="{Binding ElementName=ComboBox1, Path=SelectedValue}" Style="{DynamicResource TextBoxStyle}"/>
         <Menu Margin="5" Padding="5" Grid.Row="0">
             <MenuItem Header="Файл">
                 <MenuItem Header="Открыть" Command="Open"/>
